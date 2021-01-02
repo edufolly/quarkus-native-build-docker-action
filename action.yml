@@ -2,17 +2,16 @@ name: 'Build a Quarkus native application'
 description: 'Build a Quarkus native application'
 branding:
   icon: 'box'
-  color: 'yellow'
+  color: 'blue'
 inputs:
   outputName:
     description: name of the resulting executable binary file
     required: true
-  dockerfilePath:
-    description: 'relative path to the Dockerfile you want to use - leave blank for default'
-    required: false
+outputs:
+  time:
+    description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'Dockerfile' 
   args: 
     - ${{ inputs.outputName }}
-    - ${{ inputs.dockerfilePath }}
