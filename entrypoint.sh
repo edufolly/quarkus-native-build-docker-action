@@ -2,8 +2,8 @@
 
 set -e
 
-./gradlew build -Dquarkus.package.type=uber-jar
+./gradlew build -Dquarkus.package.type=native -Dquarkus.native.container-build=true
 
 ls build/
 
-cp build/*-runner.jar "$1.jar"
+cp build/*-runner $1

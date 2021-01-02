@@ -2,8 +2,6 @@
 
 Action to build a native executable from your Quarkus app.
 
-A default Dockerfile is used but you can specify a custom Docker via the *dockerfilePath* option.
-
 A *app-runner* binary file will be generated after the execution of this action.
 
 ### Parameters
@@ -11,7 +9,6 @@ A *app-runner* binary file will be generated after the execution of this action.
 | Argument   | Description |
 |--------|-------------|
 | outputName  | Name of the resulting executable binary file. _Required_  |
-| dockerfilePath  | Path to Dockerfile. _Optional_  |
 
 ### Exemple d'utilisation
 
@@ -19,15 +16,18 @@ A *app-runner* binary file will be generated after the execution of this action.
 on: [push]
 
 jobs:
-  native_build:
+  build:
     runs-on: ubuntu-latest
-    name: Build native Quarkus app
     steps:
       - name: Checkout the code
-        uses: actions/checkout@master
+        uses: actions/checkout@latest
       - name: Build native executable and upload it as an artifact
-        uses: maxday/quarkus-native-build-docker-action@1
-          outputName: myApp-runner
-          dockerfilePath: Dockerfile
-
+        uses: edufolly/quarkus-native-build-docker-action@master
+        with:
+          outputName: myapp-runner
+      - name: Upload native executable
+        uses: actions/upload-artifact@v1
+        with:
+          name: native-executable
+          path: myapp-runner
 ```
