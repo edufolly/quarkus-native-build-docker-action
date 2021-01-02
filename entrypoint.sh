@@ -2,8 +2,8 @@
 
 set -e
 
-gradle -b build.gradle clean buildNative
+# gradle -b build.gradle clean buildNative
 
-# ./gradlew build -Dquarkus.package.type=native
+./gradlew build -Dquarkus.package.type=native
 
 cp build/*-runner $1
