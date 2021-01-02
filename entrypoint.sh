@@ -2,4 +2,6 @@
 
 set -e
 
-cp /usr/src/app/build/*-runner $1
+gradle -b build.gradle build -Dquarkus.package.type=native
+
+cp build/*-runner $1
