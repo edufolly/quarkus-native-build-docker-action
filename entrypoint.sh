@@ -2,12 +2,8 @@
 
 set -e
 
-echo "Hello $1"
-time=$(date)
-echo "::set-output name=time::$time"
-
-./gradlew build
-
-pwd
+./gradlew build -Dquarkus.package.type=uber-jar
 
 ls build/
+
+cp build/*-runner.jar "$1.jar"

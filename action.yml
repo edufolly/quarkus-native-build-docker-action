@@ -7,9 +7,6 @@ inputs:
   outputName:
     description: name of the resulting executable binary file
     required: true
-outputs:
-  time:
-    description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'Dockerfile' 
