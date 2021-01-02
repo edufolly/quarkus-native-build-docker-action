@@ -7,3 +7,7 @@ time=$(date)
 echo "::set-output name=time::$time"
 
 ./gradlew build
+
+pwd
+
+ls build/
